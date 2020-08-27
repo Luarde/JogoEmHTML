@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha engine</title>
+    <style>
+        /* Colocando a CANVAS centralizada na tela*/
+        canvas{
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            margin: auto;}
+    </style>
+</head>
+<body>   
+    <script>
+        //Variáveis do jogo
+        var canvas, ctx, ALTURA, LARGURA, frame = 0;
+
+        function clique(event) {
+        alert("clicou");
+
+        }
+
+        function main() {
+            LARGURA = window.innerHeight;
+            ALTURA = window.innerHeight;
+            if (LARGURA >= 500) {
+                LARGURA = 600;
+                ALTURA = 600;
+            }
+            // Criando uma CANVAS e setando uma borda preta.
+            canvas = document.createElement("canvas");
+            canvas.width = LARGURA;
+            canvas.height = ALTURA;
+            canvas.style = "1px solid #000";
+
+            ctx = canvas.getContext("2d");
+            document.body.appendChild(canvas);
+            document.addEventListener("mousedown",clique);
+
+            roda();
+
+        }
+
+        function roda() {
+            atualiza();
+            desenha();
+
+            window.requestAnimationFrame(roda);
+
+        }
+
+        function atualiza() {
+            frame++;
+
+        }
+
+        function desenha() {
+            ctx.fillStyle = "#50beff";
+            ctx.fillRect(0, 0, LARGURA, ALTURA);
+
+        }      
+        
+        
+        
+        
+        //inicializa o jogo
+        main();
+    </script>
+</body>
+</html>
